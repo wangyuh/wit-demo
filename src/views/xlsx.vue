@@ -21,6 +21,9 @@
 				<el-table :data="tableData" border id="table1">
 					<el-table-column v-for="(value,key,index) in tableData[0]" :prop="key" :label="key"
 						:key="key+index">
+						<el-table-column v-for="(value,key,index) in tableData[0]" :prop="key" :label="key"
+							:key="key+index">
+						</el-table-column>
 					</el-table-column>
 				</el-table>
 			</el-col>

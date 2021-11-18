@@ -27,9 +27,17 @@
 					quickbars_selection_toolbar: "removeformat | bold italic underline strikethrough | fontsizeselect forecolor backcolor",
 					plugins: "link image table lists fullscreen quickbars code charmap preview print example",
 					// 图片上传处理
-					images_upload_handler: function(blobInfo, succFun, failFun) {
-						// succFun 返回成功的图片url  是否可转换base64图片直接返回有待测试
-						// failFun 返回错误信息
+					images_upload_handler: function(blobInfo, success, failure) {
+						// success 返回成功的图片url  是否可转换base64图片直接返回有待测试
+						// failure 返回错误信息
+						
+						//处理成base64 方法 base64图片过多会非常卡，推荐使用服务器上传法
+						// var reader = new FileReader();
+						// reader.readAsDataURL(blobInfo.blob());
+						// reader.onload = function() {
+						// success(this.result);
+						
+						// 2.服务器上传方法
 						var xhr, formData;
 						var file = blobInfo.blob(); //转化为易于理解的file对象
 						xhr = new XMLHttpRequest();
@@ -38,15 +46,15 @@
 						xhr.onload = function() {
 							var json;
 							if (xhr.status != 200) {
-								failFun('HTTP Error: ' + xhr.status);
+								failure('HTTP Error: ' + xhr.status);
 								return;
 							}
 							json = JSON.parse(xhr.responseText);
 							if (!json || typeof json.location != 'string') {
-								failFun('Invalid JSON: ' + xhr.responseText);
+								failure('Invalid JSON: ' + xhr.responseText);
 								return;
 							}
-							succFun(json.location);
+							success(json.location);
 						};
 						formData = new FormData();
 						formData.append('file', file, file.name); //此处与源文档不一样

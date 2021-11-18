@@ -19,6 +19,11 @@ const routes = [
 		path: "/table",
 		name: "element表格动态生成多级表头，可无限嵌套",
 		component: () =>import("../views/table/index.vue"),
+	},
+	{
+		path: "/tinymce",
+		name: "tinymce富文本",
+		component: () =>import("../views/tinymce/index.vue"),
 	}
 ];
 

@@ -5,6 +5,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import tinymce from 'tinymce'
+import VueTinymce from '@packy-tang/vue-tinymce'
+Vue.prototype.$tinymce = tinymce
+Vue.use(VueTinymce)
+
 Vue.use(ElementUI,{
     size: 'small'
 })

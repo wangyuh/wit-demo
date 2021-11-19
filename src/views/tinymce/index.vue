@@ -112,7 +112,13 @@
 						};
 					},
 					language: 'zh_CN', //本地化设置
-					height: '350'
+					height: '350',
+					// 事件添加
+					init_instance_callback: (editor) => {
+						editor.on('click', () => {
+							console.log("click")
+						})
+					}
 				}
 			}
 		},

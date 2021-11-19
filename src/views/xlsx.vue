@@ -28,7 +28,6 @@
 				</el-table>
 			</el-col>
 		</el-row>
-
 	</div>
 </template>
 <script>
@@ -58,9 +57,9 @@
 			},
 			exportFile() {
 				// 自动获取表格内容导出
-				var table1 = document.querySelector("#table1");
-				var sheet = xlsx.utils.table_to_sheet(table1); //将一个table对象转换成一个sheet对象
-				this.openDownloadDialog(this.sheet2blob(sheet), '下载.xlsx');
+				var table1 = document.querySelector("#table1")
+				var sheet = xlsx.utils.table_to_sheet(table1) //将一个table对象转换成一个sheet对象
+				this.openDownloadDialog(this.sheet2blob(sheet), '下载.xlsx')
 			},
 			// js设置内容导出
 			exportFile1() {
@@ -86,7 +85,7 @@
 					4: "列D",
 					5: "列E",
 					7: "列E"
-				});
+				})
 				data.forEach(function(item) {
 					var row = {
 						1: item.b,
@@ -95,16 +94,16 @@
 						4: item.x,
 						5: (item.success ? '成功' : '失败'),
 						7: "nn"
-					};
-					table.push(row);
+					}
+					table.push(row)
 				});
 				//创建book
-				var wb = xlsx.utils.book_new();
+				var wb = xlsx.utils.book_new()
 				//json转sheet
 				var ws = xlsx.utils.json_to_sheet(table, {
 					header: ["A", "B", "C", "D", "E"],
 					skipHeader: true
-				});
+				})
 				//设置列宽
 				// ws['!cols']= [
 				//     {width: 15},
@@ -113,11 +112,11 @@
 				//     {width: 15},
 				//     {width: 10}
 				// ];
-				var timestamp = (new Date()).getTime();
+				var timestamp = (new Date()).getTime()
 				//sheet写入book
-				xlsx.utils.book_append_sheet(wb, ws, "file");
+				xlsx.utils.book_append_sheet(wb, ws, "file")
 				//输出
-				xlsx.writeFile(wb, "file" + timestamp + ".xlsx");
+				xlsx.writeFile(wb, "file" + timestamp + ".xlsx")
 			},
 			/* 读取文件 */
 			readFile(file) {
@@ -131,44 +130,44 @@
 			},
 			// 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
 			sheet2blob(sheet, sheetName) {
-				sheetName = sheetName || 'sheet1';
+				sheetName = sheetName || 'sheet1'
 				let workbook = {
 					SheetNames: [sheetName],
 					Sheets: {}
 				};
-				workbook.Sheets[sheetName] = sheet; // 生成excel的配置项
+				workbook.Sheets[sheetName] = sheet // 生成excel的配置项
 
 				let wopts = {
 					bookType: 'xlsx', // 要生成的文件类型
 					bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
 					type: 'binary'
-				};
+				}
 				let wbout = xlsx.write(workbook, wopts);
 				let blob = new Blob([s2ab(wbout)], {
 					type: "application/octet-stream"
-				}); // 字符串转ArrayBuffer
+				}) // 字符串转ArrayBuffer
 				function s2ab(s) {
 					let buf = new ArrayBuffer(s.length);
 					let view = new Uint8Array(buf);
 					for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
 					return buf;
 				}
-				return blob;
+				return blob
 			},
 			openDownloadDialog(url, saveName) {
 				if (typeof url == 'object' && url instanceof Blob) {
-					url = URL.createObjectURL(url); // 创建blob地址
+					url = URL.createObjectURL(url) // 创建blob地址
 				}
 				let aLink = document.createElement('a');
-				aLink.href = url;
-				aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
-				let event;
-				if (window.MouseEvent) event = new MouseEvent('click');
+				aLink.href = url
+				aLink.download = saveName || '' // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+				let event
+				if (window.MouseEvent) event = new MouseEvent('click')
 				else {
-					event = document.createEvent('MouseEvents');
-					event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+					event = document.createEvent('MouseEvents')
+					event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
 				}
-				aLink.dispatchEvent(event);
+				aLink.dispatchEvent(event)
 			}
 		}
 	}

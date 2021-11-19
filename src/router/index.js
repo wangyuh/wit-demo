@@ -24,6 +24,11 @@ const routes = [
 		path: "/tinymce",
 		name: "tinymce富文本",
 		component: () =>import("../views/tinymce/index.vue"),
+	},
+	{
+		path: "/watermark",
+		name: "水印效果",
+		component: () =>import("../views/watermark"),
 	}
 ];
 

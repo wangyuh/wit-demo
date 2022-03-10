@@ -29,6 +29,11 @@ const routes = [
 		path: "/watermark",
 		name: "水印效果",
 		component: () =>import("../views/watermark"),
+	},
+	{
+		path: "/jsonEdit",
+		name: "json编辑器",
+		component: () =>import("../views/jsonEdit"),
 	}
 ];
 

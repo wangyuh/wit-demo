@@ -34,6 +34,11 @@ const routes = [
 		path: "/jsonEdit",
 		name: "json编辑器",
 		component: () =>import("../views/jsonEdit"),
+	},
+	{
+		path: "/webWorker",
+		name: "web-worker多线程",
+		component: () =>import("../views/webWorker"),
 	}
 ];
 

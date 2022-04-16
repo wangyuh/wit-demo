@@ -49,7 +49,7 @@ module.exports = {
 		'no-implied-eval': 0, //禁止使用隐式eval
 		'no-inline-comments': 0, //禁止行内备注
 		'no-inner-declarations': [0, 'functions'], //禁止在块语句中使用声明（变量或函数）
-		'no-invalid-regexp': 2, //禁止无效的正则表达式
+		'no-invalid-regexp': 0, //禁止无效的正则表达式
 		'no-invalid-this': 0, //禁止无效的this，只能用在构造器，类，对象字面量
 		'no-irregular-whitespace': 1, //不能有不规则的空格
 		'no-iterator': 0, //禁止使用__iterator__ 属性
@@ -63,7 +63,7 @@ module.exports = {
 		'linebreak-style': [0, 'windows'], //换行风格
 		'no-multi-spaces': 0, //不能用多余的空格
 		'no-multi-str': 0, //字符串不能用\换行
-		'no-multiple-empty-lines': [1, {
+		'no-multiple-empty-lines': [0, {
 			max: 2
 		}], //空行最多不能超过2行
 		'no-native-reassign': 0, //不能重写native对象

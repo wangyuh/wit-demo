@@ -20,6 +20,8 @@
 		created() {
 			// 一秒后执行js长任务
 			// setTimeout(this.longFun, 1000)
+			
+			//长任务重新开线程执行
 			let myWorker = new test()
 			myWorker.postMessage('新线程'); // 发送
 			myWorker.onmessage = event => {

@@ -14,7 +14,7 @@
 	// import VueTinymce from '@packy-tang/vue-tinymce'	
 	// Vue.prototype.$tinymce = tinymce // 将全局tinymce对象指向给Vue作用域下
 	// Vue.use(VueTinymce)              // 安装vue的tinymce组件
-	
+	// 如果表格弹框等不出现，添加全局样式 .tox-tinymce-aux{z-index: 9999 !important}
 	export default {
 		data() {
 			return {

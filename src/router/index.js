@@ -54,6 +54,16 @@ const routes = [
 		path: '/tableScroll',
 		name: 'element-table表格虚拟滚动加载',
 		component: () => import('../views/tableScroll')
+	},
+	{
+		path: '/tableColScroll',
+		name: 'element-table表格横向虚拟滚动加载',
+		component: () => import('../views/tableColScroll')
+	},
+	{
+		path: '/vueSuperFlow',
+		name: 'vueSuperFlow流程图',
+		component: () => import('../views/vueSuperFlow')
 	}
 ]
 

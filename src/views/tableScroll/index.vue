@@ -3,7 +3,7 @@
     <!-- data为全部数据，key-prop绑定列唯一值 -->
     <virtual-scroll
       :data="resultData"
-      :item-size="50"
+      :item-size="53"
       key-prop="id"
       :virtualized="true"
       style="height: 100%;"
@@ -171,7 +171,7 @@ export default {
     }
   },
 	created() {
-		for (let i = 0; i < 2000; i++) {
+		for (let i = 0; i < 100000; i++) {
 			this.resultData.push({
 				id: i,
 				name: 'name' + i,
